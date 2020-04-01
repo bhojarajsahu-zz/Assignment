@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Assignment.Models.Property>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Property Details</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Address
+            </th>
+            <th>
+                Year Built
+            </th>
+            <th>
+                List Price
+            </th>
+            <th>
+                Monthly Rent
+            </th>
+            <th>
+                Gross Yield
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Address.Address1)
+                    @Html.DisplayFor(model => item.Address.Address2)
+                    @Html.DisplayFor(model => item.Address.City)
+                    @Html.DisplayFor(model => item.Address.Country)
+                    @Html.DisplayFor(model => item.Address.District)
+                    @Html.DisplayFor(model => item.Address.State)
+                    @Html.DisplayFor(model => item.Address.Zip)
+                    @Html.DisplayFor(model => item.Address.ZipPlus4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhysicalDisplay.YearBuiltDisplay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinancialDisplay.ListPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinancialDisplay.MonthlyRentDisplay)
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinancialDisplay.GrossYield)
+                </td>
+                <td>
+                    @Html.ActionLink("Save", "Save", "Home", new { address = item.Address.Address1,yearbuilt = item.PhysicalDisplay.YearBuiltDisplay, listPrice = item.FinancialDisplay.ListPrice,monthlyRent = item.FinancialDisplay.MonthlyRent, gross = item.FinancialDisplay.GrossYield})
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+    <p>******************************************************************</p>
+</div>

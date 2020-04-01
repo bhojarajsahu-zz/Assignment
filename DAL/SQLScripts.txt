@@ -1,0 +1,37 @@
+﻿--Database creation script
+create database Assignment1;
+
+--Table creation script
+USE [Assignment]
+GO
+CREATE TABLE [dbo].[Properties](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[address] [varchar](500) NULL,
+	[year_built] [int] NULL,
+	[list_price] decimal(10,2) NULL,
+	[monthly_rent] decimal(10,2) NULL,
+	[gross_yield] decimal(10,2) NULL
+) ON [PRIMARY]
+GO
+
+--SP creation script
+USE [Assignment]
+GO
+
+Create procedure [dbo].[spAddProperty]     
+(    
+    @Address varchar(500),  
+	@Year_built int,
+    @List_price decimal(10,2),    
+    @Monthly_rent decimal(10,2),    
+    @Gross_yield decimal(10,2)    
+)    
+as     
+Begin     
+    Insert into Properties(address,year_built,list_price,monthly_rent, gross_yield)     
+    Values (@Address,@Year_built,@List_price,@Monthly_rent, @Gross_yield)     
+End
+GO
+
+
+
